@@ -1,0 +1,9 @@
+2020-07-06 19:10:58,934 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-06 19:10:58,934 > INFO > Starting Airwave Agent...
+2020-07-06 19:11:00,664 > INFO > Login success
+2020-07-06 19:11:00,665 > INFO > Collecting amp status... 
+2020-07-06 19:11:00,990 > INFO > Collecting amp status Success.....
+2020-07-06 19:11:02,092 > INFO > Post not accepted by server
+2020-07-06 19:11:02,092 > INFO > Sleeping (60 sec) for next collection 

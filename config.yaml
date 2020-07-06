@@ -1,0 +1,6 @@
+agent_name: LAB_AIRWAVE
+airwave_ip: 10.17.84.20
+username: admin
+password: HTS!ndi@
+collector_url: http://3.128.24.0/collect_api/air_post
+
