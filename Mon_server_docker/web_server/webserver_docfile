@@ -1,0 +1,72 @@
+# Version : 19_05_25
+# Current stable nginx
+#FROM sgowtham441/s_nginx_base_1.14.0:v1
+
+FROM ubuntu:18.04
+
+MAINTAINER gowtham
+
+RUN apt update && apt install -y \
+        nginx
+
+# ============== PHP server  ============
+
+#RUN apt install -y php-cli php-cgi php-fpm
+
+# ============= PHP End =================
+
+
+# =========== Python server start ===========
+
+#RUN apt-get remove python3.6-minimal -y
+
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt install python3.7 -y
+
+COPY ./get-pip.py /get-pip.py
+RUN python3.7 /get-pip.py
+
+RUN apt install python3.7-dev -y
+
+RUN apt install build-essential libssl-dev libffi-dev -y
+
+RUN pip3 install uwsgi flask flask_cors flask_pymongo requests redis cerberus
+
+VOLUME ["/webr_api"]
+
+COPY ./mon_api /webr_api
+
+COPY uwsgi_ini.ini /webr_api/
+
+# =========== Python End ===================
+
+
+# Creating local temp volume
+VOLUME ["/var/www"]
+
+#COPY ./searchengine_admin_portal/html /var/www/html
+#COPY ./searchengine_admin_portal/pages /var/www/pages
+
+
+# ============ Nginx Configuration start ===============
+
+COPY nginx.conf /etc/nginx/
+COPY sites /etc/nginx/sites-enabled/
+RUN rm -f /etc/nginx/sites-enabled/default
+
+# ============ Nginx End =============================
+
+
+#Stating Service
+COPY start.sh /start.sh
+RUN chmod 7777 /start.sh
+
+#Clean stop
+COPY clean.sh /clean.sh
+RUN chmod 7777 /clean.sh
+
+EXPOSE 80
+
+CMD ["/start.sh"]
+

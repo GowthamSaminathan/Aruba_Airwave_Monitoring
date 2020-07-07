@@ -1,0 +1,13 @@
+# Version : 19_05_25
+
+FROM mongo:4.0.12-xenial
+
+MAINTAINER gowtham
+
+COPY ./mongod.conf /etc/mongod.conf
+
+#VOLUME ["/mongodb_log"]
+
+
+
+

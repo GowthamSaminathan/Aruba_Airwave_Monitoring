@@ -1,0 +1,39 @@
+# Before built the image create volume webserver-log,nginx-log using below command
+# webserver-log used for python gateway and startup,stop logs
+# Note : php-fpm logs are still in container storage : /var/log/php7.2-fpm.log ( Log will lost once container destroied )
+
+	sudo docker volume create --driver local --name mon_webserver-log
+	sudo docker volume create --driver local --name mon_nginx-log
+
+# Building the image
+	sudo docker build . --tag mon_webserver_local:v1 --file webserver_docfile
+
+# Run the Container
+	
+	sudo docker run -it -p 80:80/tcp --mount source=mon_nginx-log,target=/var/log/nginx/ --mount source=mon_webserver-log,target=/var/log/webserver-log/ \
+--name mon_webserver_local --env-file ./env.list -h mon_webserver_local -d mon_webserver_local:v1
+
+# Run the Continer for develeoper
+
+sudo docker run -it --net mon-network --ip 172.18.0.60 -p 80:80/tcp --mount source=mon_nginx-log,target=/var/log/nginx/ --mount source=mon_webserver-log,target=/var/log/webserver-log/ --name mon_webserver_local -v ~
+/mon_server/www:/var/www --env-file ./env.list -h mon_webserver_local -d mon_webserver_local:v1
+
+
+# Exec the container
+	sudo docker exec -it mon_webserver_local /bin/bash
+
+#Stop the container
+	sudo docker stop mon_webserver_local
+
+# Start the container
+	sudo docker start mon_webserver_local
+
+
+# Developer note : 
+
+Copy file using "docker cp" once file modified
+
+sudo docker cp api_server.py webserver_local:/webr_api/api_server.py
+
+# Restart the service to take effect
+sudo docker restart webserver_local

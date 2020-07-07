@@ -77,19 +77,24 @@ class Airwave_fetch():
 		except Exception:
 			logger.exception("collect_ap_status")
 
-	def post_to_server(self,data):
+	def post_to_server(self,data,agent_type):
 		try:
 			xml_file = io.BytesIO(data)
 
 			url = self.config.get("collector_url")
-			headers = {'Content-type': 'multipart/form-data'}
-			data = {"agentname":self.config.get("agent_name"),"airwave_ip":self.config.get("airwave_ip")}
-			files = {'document': xml_file}
+			#headers = {'Content-type': 'multipart/form-data'}
 			
-			res = requests.post(url, files=files, data=data, headers=headers)
+			files = {'file': ("file",xml_file)}
+
+			files.update({"agentname":(None,self.config.get("agent_name"))})
+			files.update({"airwave_ip":(None,self.config.get("airwave_ip"))})
+			files.update({"agent_type":(None,agent_type)})
+			
+			res = requests.post(url, files=files)
 			
 			if res.status_code == 200:
 				logger.info("Post accepted by server")
+				print(res.content)
 			else:
 				logger.info("Post not accepted by server")
 		except Exception:
@@ -106,8 +111,8 @@ class Airwave_fetch():
 					collect_amp_success = True
 					while collect_amp_success == True:
 						collect_amp_response = self.collect_amp_status()
-						print(type(collect_amp_response))
-						print(collect_amp_response)
+						#print(type(collect_amp_response))
+						#print(collect_amp_response)
 						if collect_amp_response == None:
 							# Unknown error
 							logger.error("unknown issue , sleeping 30 sec")
@@ -121,7 +126,7 @@ class Airwave_fetch():
 							logger.error("unknown status code, sleeping 120 sec")
 							time.sleep(120)
 						else:
-							self.post_to_server(collect_amp_response)
+							self.post_to_server(collect_amp_response,"air_amp")
 							logger.info("Sleeping (60 sec) for next collection ")
 							time.sleep(60)
 				else:

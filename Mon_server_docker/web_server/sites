@@ -1,0 +1,21 @@
+server {
+    listen         0.0.0.0:80;
+
+
+
+# FOR STATIC FILES
+    location / {
+    root /var/www/html;
+    index index.html;
+  }
+
+# FOR PYTHON FASTCGI
+    location /portal {
+    #root /var/www;
+    include uwsgi_params;
+    uwsgi_pass unix:/run/python_app.sock;
+    uwsgi_param PATH_INFO $document_uri;
+    uwsgi_param SCRIPT_NAME "";
+  }
+
+}
