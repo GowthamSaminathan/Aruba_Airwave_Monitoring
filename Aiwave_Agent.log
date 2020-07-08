@@ -3404,3 +3404,359 @@ requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01
 2020-07-07 13:22:20,906 > INFO > Sleeping (60 sec) for next collection 
 2020-07-07 13:23:20,907 > INFO > Collecting amp status... 
 2020-07-07 13:23:21,166 > INFO > Collecting amp status Success.....
+2020-07-07 13:23:42,178 > ERROR > post_to_server
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\scripts\py\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "d:\scripts\py\lib\http\client.py", line 956, in send
+    self.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000190CAF37AC8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAF37AC8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 93, in post_to_server
+    res = requests.post(url, files=files)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAF37AC8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-07 13:23:42,182 > INFO > Sleeping (60 sec) for next collection 
+2020-07-07 13:24:42,183 > INFO > Collecting amp status... 
+2020-07-07 13:24:42,458 > INFO > Collecting amp status Success.....
+2020-07-07 13:25:03,468 > ERROR > post_to_server
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\scripts\py\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "d:\scripts\py\lib\http\client.py", line 956, in send
+    self.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000190CAEF0438>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAEF0438>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 93, in post_to_server
+    res = requests.post(url, files=files)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAEF0438>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-07 13:25:03,469 > INFO > Sleeping (60 sec) for next collection 
+2020-07-07 13:26:03,469 > INFO > Collecting amp status... 
+2020-07-07 13:26:03,767 > INFO > Collecting amp status Success.....
+2020-07-07 13:26:24,790 > ERROR > post_to_server
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\scripts\py\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "d:\scripts\py\lib\http\client.py", line 956, in send
+    self.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000190CAFBD860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAFBD860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 93, in post_to_server
+    res = requests.post(url, files=files)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAFBD860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-07 13:26:24,794 > INFO > Sleeping (60 sec) for next collection 
+2020-07-07 13:27:24,795 > INFO > Collecting amp status... 
+2020-07-07 13:27:25,071 > INFO > Collecting amp status Success.....
+2020-07-07 13:27:46,696 > ERROR > post_to_server
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\scripts\py\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "d:\scripts\py\lib\http\client.py", line 956, in send
+    self.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000190CAFBDF28>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAFBDF28>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 93, in post_to_server
+    res = requests.post(url, files=files)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000190CAFBDF28>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-07 13:27:46,700 > INFO > Sleeping (60 sec) for next collection 
+2020-07-07 13:28:46,701 > INFO > Collecting amp status... 
+2020-07-07 13:29:08,297 > ERROR > collect_ap_status
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "d:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "d:\scripts\py\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "d:\scripts\py\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "d:\scripts\py\lib\ssl.py", line 1049, in recv_into
+    return self.read(nbytes, buffer)
+  File "d:\scripts\py\lib\ssl.py", line 908, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "d:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "d:\scripts\py\lib\http\client.py", line 257, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "d:\scripts\py\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "d:\scripts\py\lib\ssl.py", line 1049, in recv_into
+    return self.read(nbytes, buffer)
+  File "d:\scripts\py\lib\ssl.py", line 908, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, 'A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond', None, 10060, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 67, in collect_amp_status
+    res = self.air_session.get(url,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', TimeoutError(10060, 'A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond', None, 10060, None))
+2020-07-07 13:29:08,395 > ERROR > unknown issue , sleeping 30 sec
+2020-07-07 13:29:38,396 > INFO > Collecting amp status... 
+2020-07-08 10:24:06,217 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-08 10:24:06,218 > INFO > Starting Airwave Agent...
+2020-07-08 10:24:07,927 > INFO > Login success
+2020-07-08 10:24:07,928 > INFO > Collecting amp status... 
+2020-07-08 10:24:08,215 > INFO > Collecting amp status Success.....
+2020-07-08 10:24:09,456 > INFO > Post accepted by server
+2020-07-08 10:24:09,456 > INFO > Sleeping (60 sec) for next collection 
+2020-07-08 10:25:09,457 > INFO > Collecting amp status... 
+2020-07-08 10:25:09,768 > INFO > Collecting amp status Success.....
+2020-07-08 10:25:10,288 > INFO > Post accepted by server
+2020-07-08 10:25:10,289 > INFO > Sleeping (60 sec) for next collection 
+2020-07-08 10:26:10,290 > INFO > Collecting amp status... 
+2020-07-08 10:26:10,572 > INFO > Collecting amp status Success.....
+2020-07-08 10:26:11,100 > INFO > Post accepted by server
+2020-07-08 10:26:11,101 > INFO > Sleeping (60 sec) for next collection 
+2020-07-08 11:11:00,910 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-08 11:11:00,911 > INFO > Starting Airwave Agent...
+2020-07-08 11:11:02,375 > INFO > Login success
+2020-07-08 11:11:02,375 > INFO > Collecting amp status... 
+2020-07-08 11:11:02,647 > INFO > Collecting amp status Success.....
+2020-07-08 11:11:03,171 > INFO > Post accepted by server
+2020-07-08 11:11:03,172 > INFO > Sleeping (60 sec) for next collection 
+2020-07-08 11:12:03,172 > INFO > Collecting amp status... 
+2020-07-08 11:12:03,528 > INFO > Collecting amp status Success.....
+2020-07-08 11:12:04,050 > INFO > Post accepted by server
+2020-07-08 11:12:04,051 > INFO > Sleeping (60 sec) for next collection 
+2020-07-08 11:13:04,052 > INFO > Collecting amp status... 
+2020-07-08 11:13:04,340 > INFO > Collecting amp status Success.....
+2020-07-08 11:13:04,867 > INFO > Post accepted by server
+2020-07-08 11:13:04,867 > INFO > Sleeping (60 sec) for next collection 

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Aruba Airwave Summary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+        <img src="title.png" height="28" alt="CoolBrand">
+    </a>
+    
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px; color: #21252994;">Clients Monitoring</span></h6>
+
+    <h6 style="margin-top: 12px;"><span class="badge badge-info">Total Clients : 5</span></h6>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+       
+        <div class="navbar-nav ml-auto">
+            <span class="badge badge-danger" id="load-status">Loading...</span>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+<div class="container-fluid monitor-col" id="monitor-1"><div class="row monitor-row" id="monitor-row-1">
+
+<div class="col-sm-4 border border-primary" id="client-name" style="background-color:#f8f9fa">
+<img src="title.png" class="img-thumbnail " alt="Cinque Terre">
+<span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>Alerts 10</span>
+<span class="badge badge-secondary"><i class="fas fa-arrow-up"></i>UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Down 10</span>
+<span class="badge badge-success"><i class="fas fa-arrow-up"></i>Wired UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Wired Down 10</span>
+<span class="badge badge-success"><i class="fas fa-wifi"></i>Wirless UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-wifi"></i>Wirless Down 10</span>
+<span class="badge badge-dark"><i class="fas fa-user-secret"></i>Rouge 10</span>
+</div>
+
+
+    	
+<div class="col-sm-4 border border-primary" style="background-color:#f8f9fa">
+<img src="title.png" class="img-thumbnail " alt="Cinque Terre">
+<span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>Alerts 10</span>
+<span class="badge badge-secondary"><i class="fas fa-arrow-up"></i>UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Down 10</span>
+<span class="badge badge-success"><i class="fas fa-arrow-up"></i>Wired UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Wired Down 10</span>
+<span class="badge badge-success"><i class="fas fa-wifi"></i>Wirless UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-wifi"></i>Wirless Down 10</span>
+<span class="badge badge-dark"><i class="fas fa-user-secret"></i>Rouge 10</span>
+</div>
+
+
+<div class="col-sm-4 border border-primary" style="background-color:#f8f9fa">
+<img src="title.png" class="img-thumbnail " alt="Cinque Terre">
+<span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>Alerts 10</span>
+<span class="badge badge-secondary"><i class="fas fa-arrow-up"></i>UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Down 10</span>
+<span class="badge badge-success"><i class="fas fa-arrow-up"></i>Wired UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-arrow-down"></i>Wired Down 10</span>
+<span class="badge badge-success"><i class="fas fa-wifi"></i>Wirless UP 10</span>
+<span class="badge badge-danger"><i class="fas fa-wifi"></i>Wirless Down 10</span>
+<span class="badge badge-dark"><i class="fas fa-user-secret"></i>Rouge 10</span>
+</div>
+  
+
+
+</div></div>
+
+
+
+
+
+<script>
+
+
+$( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
+
+console.log("ajax response error");  
+console.log(settings);
+
+});
+
+
+function process_data(data, textStatus, jqXHR){
+
+console.log("Received Update");
+console.log(data);
+
+if(data["results"] == "success" ){
+
+$("#load-status").attr('class', 'badge badge-success');
+$("#load-status").text("Online");
+$("#load-status").fadeOut(2500).fadeIn(2500);
+
+
+
+}else{
+
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Error");
+$("#load-status").fadeOut(2500).fadeIn(2500);
+
+}
+
+}
+
+
+// Process Data End ================== //
+
+
+function process_error(xhr, ajaxOptions, thrownError){
+
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Connection Error");
+$("#load-status").fadeOut(2500).fadeIn(2500);
+
+console.log("** ==> Process Error...");
+
+}
+
+function get_update(){
+
+try{
+
+console.log("Getting Update....")
+
+$.ajax({
+    type: 'GET',url: '/portal/collect_api/air_get',contentType: false,cache: false,processData:false,
+    success: process_data,error: process_error})
+
+}catch(err){console.log("** ==> get_update Error..."+err);}}
+
+
+function create_table_head(agent_name){
+
+make_table = (agent_name) => `<table class="${agent_name}_table table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col" class="${agent_name}_name">${agent_name}</th>
+      <th scope="col" class="${agent_name}_alerts">Alerts </th>
+      <th scope="col" class="${agent_name}_down">Down</th>
+      <th scope="col" class="${agent_name}_up">UP</th>
+      <th scope="col" class="${agent_name}_wldown">Wirless Down</th>
+      <th scope="col" class="${agent_name}_wddown">Wired Down</th>
+      <th scope="col" class="${agent_name}_wlup">Wirless UP</th>
+      <th scope="col" class="${agent_name}_wdup">Wired UP</th>
+    </tr>
+  </thead>
+
+
+
+  </table>
+   `
+return make_table(agent_name)
+
+
+}
+
+console.log(create_table_head("TAMU"));
+get_update();
+
+</script>
+
+
+
+</body>
+</html>
+

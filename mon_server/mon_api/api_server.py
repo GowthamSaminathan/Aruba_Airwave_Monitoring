@@ -200,8 +200,14 @@ def air_agent_get():
 					find_result = mcollection.find(query,{"_id":0})
 					v_data = validate_results(list(find_result))
 					#find_result = list(find_result)
+					if x == 0:
+						# Find the latest updated , must be in last two min
+						live_end_time = start_time - datetime.timedelta(minutes=2)
+						query = {"agentname":agent,"agent_date":{'$lt': start_time,'$gte': live_end_time}}
+						find_live = mcollection.find_one(query,{"_id":0})
+						all_results.append({"agentname":agent,"visual":find_live,"type":"air_amp","history":x,"live":"true"})
 
-					all_results.append({"agentname":agent,"visual":v_data,"type":"air_amp","history":x})
+					all_results.append({"agentname":agent,"visual":v_data,"type":"air_amp","history":x,"live":"false"})
 					#logger.info(all_results)
 
 			start_time = start_time - datetime.timedelta(minutes=time_between)
