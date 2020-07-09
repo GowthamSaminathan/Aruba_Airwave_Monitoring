@@ -1,0 +1,1 @@
+d:\scripts\py\python.exe Airwave_Agent.py

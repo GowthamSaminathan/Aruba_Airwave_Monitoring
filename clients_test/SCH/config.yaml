@@ -1,0 +1,6 @@
+agent_name: SCH
+airwave_ip: 10.17.84.20
+username: admin
+password: HTS!ndi@
+collector_url: http://server2.webr-env01.xyz/portal/collect_api/air_post
+

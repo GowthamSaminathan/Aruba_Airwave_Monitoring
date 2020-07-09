@@ -1,0 +1,364 @@
+2020-07-09 12:25:43,252 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-09 12:25:43,252 > INFO > Starting Airwave Agent...
+2020-07-09 12:25:44,703 > INFO > Login success
+2020-07-09 12:25:44,703 > INFO > Collecting amp status... 
+2020-07-09 12:25:44,977 > INFO > Collecting amp status Success.....
+2020-07-09 12:25:45,513 > INFO > Post accepted by server
+2020-07-09 12:25:45,514 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:26:45,514 > INFO > Collecting amp status... 
+2020-07-09 12:26:45,820 > INFO > Collecting amp status Success.....
+2020-07-09 12:26:46,326 > INFO > Post accepted by server
+2020-07-09 12:26:46,327 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:27:46,328 > INFO > Collecting amp status... 
+2020-07-09 12:27:46,639 > INFO > Collecting amp status Success.....
+2020-07-09 12:27:47,145 > INFO > Post accepted by server
+2020-07-09 12:27:47,146 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:28:47,147 > INFO > Collecting amp status... 
+2020-07-09 12:28:47,444 > INFO > Collecting amp status Success.....
+2020-07-09 12:28:47,950 > INFO > Post accepted by server
+2020-07-09 12:28:47,951 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:29:47,951 > INFO > Collecting amp status... 
+2020-07-09 12:29:48,249 > INFO > Collecting amp status Success.....
+2020-07-09 12:29:48,765 > INFO > Post accepted by server
+2020-07-09 12:29:48,765 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:30:48,766 > INFO > Collecting amp status... 
+2020-07-09 12:30:49,041 > INFO > Collecting amp status Success.....
+2020-07-09 12:30:49,550 > INFO > Post accepted by server
+2020-07-09 12:30:49,550 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:31:49,550 > INFO > Collecting amp status... 
+2020-07-09 12:31:49,819 > INFO > Collecting amp status Success.....
+2020-07-09 12:31:50,344 > INFO > Post accepted by server
+2020-07-09 12:31:50,345 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:32:50,346 > INFO > Collecting amp status... 
+2020-07-09 12:32:50,654 > INFO > Collecting amp status Success.....
+2020-07-09 12:32:51,154 > INFO > Post accepted by server
+2020-07-09 12:32:51,155 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:33:51,155 > INFO > Collecting amp status... 
+2020-07-09 12:33:51,440 > INFO > Collecting amp status Success.....
+2020-07-09 12:33:51,946 > INFO > Post accepted by server
+2020-07-09 12:33:51,946 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:34:51,946 > INFO > Collecting amp status... 
+2020-07-09 12:34:52,239 > INFO > Collecting amp status Success.....
+2020-07-09 12:34:52,765 > INFO > Post accepted by server
+2020-07-09 12:34:52,765 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:35:52,766 > INFO > Collecting amp status... 
+2020-07-09 12:35:53,073 > INFO > Collecting amp status Success.....
+2020-07-09 12:35:54,433 > INFO > Post accepted by server
+2020-07-09 12:35:54,433 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:36:54,433 > INFO > Collecting amp status... 
+2020-07-09 12:36:54,762 > INFO > Collecting amp status Success.....
+2020-07-09 12:36:55,274 > INFO > Post accepted by server
+2020-07-09 12:36:55,274 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:37:55,275 > INFO > Collecting amp status... 
+2020-07-09 12:37:55,538 > INFO > Collecting amp status Success.....
+2020-07-09 12:37:56,054 > INFO > Post accepted by server
+2020-07-09 12:37:56,055 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:38:56,056 > INFO > Collecting amp status... 
+2020-07-09 12:38:56,341 > INFO > Collecting amp status Success.....
+2020-07-09 12:38:56,852 > INFO > Post accepted by server
+2020-07-09 12:38:56,852 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:39:56,853 > INFO > Collecting amp status... 
+2020-07-09 12:39:57,168 > INFO > Collecting amp status Success.....
+2020-07-09 12:39:57,668 > INFO > Post accepted by server
+2020-07-09 12:39:57,668 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:40:57,668 > INFO > Collecting amp status... 
+2020-07-09 12:40:57,947 > INFO > Collecting amp status Success.....
+2020-07-09 12:40:58,466 > INFO > Post accepted by server
+2020-07-09 12:40:58,467 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:41:58,467 > INFO > Collecting amp status... 
+2020-07-09 12:41:58,787 > INFO > Collecting amp status Success.....
+2020-07-09 12:41:59,299 > INFO > Post accepted by server
+2020-07-09 12:41:59,300 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:56:40,022 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-09 12:56:40,023 > INFO > Starting Airwave Agent...
+2020-07-09 12:56:49,748 > INFO > Login success
+2020-07-09 12:56:49,749 > INFO > Collecting amp status... 
+2020-07-09 12:56:50,618 > INFO > Collecting amp status Success.....
+2020-07-09 12:56:59,541 > INFO > Post accepted by server
+2020-07-09 12:56:59,542 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:57:59,544 > INFO > Collecting amp status... 
+2020-07-09 12:58:00,358 > INFO > Collecting amp status Success.....
+2020-07-09 12:58:01,969 > INFO > Post accepted by server
+2020-07-09 12:58:01,969 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 12:59:01,971 > INFO > Collecting amp status... 
+2020-07-09 12:59:02,744 > INFO > Collecting amp status Success.....
+2020-07-09 12:59:08,462 > INFO > Post accepted by server
+2020-07-09 12:59:08,463 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 13:00:08,463 > INFO > Collecting amp status... 
+2020-07-09 13:00:11,605 > INFO > Collecting amp status Success.....
+2020-07-09 13:00:13,002 > INFO > Post accepted by server
+2020-07-09 13:00:13,002 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 13:01:13,003 > INFO > Collecting amp status... 
+2020-07-09 13:01:13,673 > INFO > Collecting amp status Success.....
+2020-07-09 13:01:15,164 > INFO > Post accepted by server
+2020-07-09 13:01:15,164 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 13:02:15,164 > INFO > Collecting amp status... 
+2020-07-09 13:02:18,402 > INFO > Collecting amp status Success.....
+2020-07-09 13:02:26,713 > INFO > Post accepted by server
+2020-07-09 13:02:26,714 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 13:03:26,716 > INFO > Collecting amp status... 
+2020-07-09 13:03:30,280 > INFO > Collecting amp status Success.....
+2020-07-09 13:03:32,046 > INFO > Post accepted by server
+2020-07-09 13:03:32,046 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 13:04:32,047 > INFO > Collecting amp status... 
+2020-07-09 13:04:32,796 > INFO > Collecting amp status Success.....
+2020-07-09 13:04:34,628 > ERROR > post_to_server
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "d:\scripts\py\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "d:\scripts\py\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "d:\scripts\py\lib\http\client.py", line 956, in send
+    self.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001CB8B697128>: Failed to establish a new connection: [WinError 10053] An established connection was aborted by the software in your host machine
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CB8B697128>: Failed to establish a new connection: [WinError 10053] An established connection was aborted by the software in your host machine'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 93, in post_to_server
+    res = requests.post(url, files=files)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='server2.webr-env01.xyz', port=80): Max retries exceeded with url: /portal/collect_api/air_post (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CB8B697128>: Failed to establish a new connection: [WinError 10053] An established connection was aborted by the software in your host machine'))
+2020-07-09 13:04:34,960 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:30:56,212 > INFO > 
+ =================== Starting Airwave Agent ======================== 
+
+2020-07-09 17:30:56,212 > INFO > Starting Airwave Agent...
+2020-07-09 17:31:17,220 > ERROR > airwave_login
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000002709A6EAC18>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.20', port=443): Max retries exceeded with url: /LOGIN (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002709A6EAC18>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 52, in airwave_login
+    res = self.air_session.post(login_url, data = login_post,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.20', port=443): Max retries exceeded with url: /LOGIN (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002709A6EAC18>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-09 17:31:17,227 > WARNING > Login failed: trying after 30 sec
+2020-07-09 17:32:08,237 > ERROR > airwave_login
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000002709A6EADA0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.20', port=443): Max retries exceeded with url: /LOGIN (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002709A6EADA0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "Airwave_Agent.py", line 52, in airwave_login
+    res = self.air_session.post(login_url, data = login_post,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.20', port=443): Max retries exceeded with url: /LOGIN (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002709A6EADA0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-07-09 17:32:08,238 > WARNING > Login failed: trying after 30 sec
+2020-07-09 17:32:39,769 > INFO > Login success
+2020-07-09 17:32:39,769 > INFO > Collecting amp status... 
+2020-07-09 17:32:40,057 > INFO > Collecting amp status Success.....
+2020-07-09 17:32:40,597 > INFO > Post accepted by server
+2020-07-09 17:32:40,598 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:33:40,600 > INFO > Collecting amp status... 
+2020-07-09 17:33:40,898 > INFO > Collecting amp status Success.....
+2020-07-09 17:33:41,430 > INFO > Post accepted by server
+2020-07-09 17:33:41,430 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:34:41,431 > INFO > Collecting amp status... 
+2020-07-09 17:34:41,884 > INFO > Collecting amp status Success.....
+2020-07-09 17:34:42,407 > INFO > Post accepted by server
+2020-07-09 17:34:42,407 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:35:42,408 > INFO > Collecting amp status... 
+2020-07-09 17:35:42,699 > INFO > Collecting amp status Success.....
+2020-07-09 17:35:43,212 > INFO > Post accepted by server
+2020-07-09 17:35:43,212 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:36:43,212 > INFO > Collecting amp status... 
+2020-07-09 17:36:43,539 > INFO > Collecting amp status Success.....
+2020-07-09 17:36:44,061 > INFO > Post accepted by server
+2020-07-09 17:36:44,061 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:37:44,062 > INFO > Collecting amp status... 
+2020-07-09 17:37:44,354 > INFO > Collecting amp status Success.....
+2020-07-09 17:37:44,892 > INFO > Post accepted by server
+2020-07-09 17:37:44,892 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:38:44,893 > INFO > Collecting amp status... 
+2020-07-09 17:38:45,200 > INFO > Collecting amp status Success.....
+2020-07-09 17:38:45,725 > INFO > Post accepted by server
+2020-07-09 17:38:45,726 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:39:45,726 > INFO > Collecting amp status... 
+2020-07-09 17:39:46,017 > INFO > Collecting amp status Success.....
+2020-07-09 17:39:46,541 > INFO > Post accepted by server
+2020-07-09 17:39:46,542 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:40:46,543 > INFO > Collecting amp status... 
+2020-07-09 17:40:46,824 > INFO > Collecting amp status Success.....
+2020-07-09 17:40:47,340 > INFO > Post accepted by server
+2020-07-09 17:40:47,341 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:41:47,343 > INFO > Collecting amp status... 
+2020-07-09 17:41:47,622 > INFO > Collecting amp status Success.....
+2020-07-09 17:41:48,139 > INFO > Post accepted by server
+2020-07-09 17:41:48,139 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:42:48,140 > INFO > Collecting amp status... 
+2020-07-09 17:42:48,434 > INFO > Collecting amp status Success.....
+2020-07-09 17:42:48,972 > INFO > Post accepted by server
+2020-07-09 17:42:48,973 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:43:48,974 > INFO > Collecting amp status... 
+2020-07-09 17:43:49,268 > INFO > Collecting amp status Success.....
+2020-07-09 17:43:49,785 > INFO > Post accepted by server
+2020-07-09 17:43:49,786 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:44:49,787 > INFO > Collecting amp status... 
+2020-07-09 17:44:50,072 > INFO > Collecting amp status Success.....
+2020-07-09 17:44:50,598 > INFO > Post accepted by server
+2020-07-09 17:44:50,598 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:45:50,599 > INFO > Collecting amp status... 
+2020-07-09 17:45:50,900 > INFO > Collecting amp status Success.....
+2020-07-09 17:45:51,408 > INFO > Post accepted by server
+2020-07-09 17:45:51,409 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:46:51,409 > INFO > Collecting amp status... 
+2020-07-09 17:46:51,712 > INFO > Collecting amp status Success.....
+2020-07-09 17:46:52,232 > INFO > Post accepted by server
+2020-07-09 17:46:52,232 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:47:52,232 > INFO > Collecting amp status... 
+2020-07-09 17:47:52,508 > INFO > Collecting amp status Success.....
+2020-07-09 17:47:53,020 > INFO > Post accepted by server
+2020-07-09 17:47:53,021 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:48:53,021 > INFO > Collecting amp status... 
+2020-07-09 17:48:53,293 > INFO > Collecting amp status Success.....
+2020-07-09 17:48:53,793 > INFO > Post accepted by server
+2020-07-09 17:48:53,794 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:49:53,795 > INFO > Collecting amp status... 
+2020-07-09 17:49:54,085 > INFO > Collecting amp status Success.....
+2020-07-09 17:49:54,603 > INFO > Post accepted by server
+2020-07-09 17:49:54,603 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:50:54,604 > INFO > Collecting amp status... 
+2020-07-09 17:50:54,886 > INFO > Collecting amp status Success.....
+2020-07-09 17:50:55,403 > INFO > Post accepted by server
+2020-07-09 17:50:55,404 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:51:55,405 > INFO > Collecting amp status... 
+2020-07-09 17:51:55,699 > INFO > Collecting amp status Success.....
+2020-07-09 17:51:56,222 > INFO > Post accepted by server
+2020-07-09 17:51:56,222 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:52:56,222 > INFO > Collecting amp status... 
+2020-07-09 17:52:56,579 > INFO > Collecting amp status Success.....
+2020-07-09 17:52:57,089 > INFO > Post accepted by server
+2020-07-09 17:52:57,089 > INFO > Sleeping (60 sec) for next collection 
+2020-07-09 17:53:57,090 > INFO > Collecting amp status... 
+2020-07-09 17:53:57,365 > INFO > Collecting amp status Success.....
+2020-07-09 17:53:57,868 > INFO > Post accepted by server
+2020-07-09 17:53:57,868 > INFO > Sleeping (60 sec) for next collection 
