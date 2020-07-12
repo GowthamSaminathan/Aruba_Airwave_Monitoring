@@ -1,0 +1,25 @@
+agent_name: EMAIL_AGENT
+email: eeee@hpe.com
+password: ppppp@123
+email_server: outlook.office365.com
+filter time: 24
+customers:
+  - email: wau.edu
+    alise: WAU
+  - email: tdameritrade.com
+    alise: TDA
+  - email: tamu.edu
+    alise: TAMU
+  - email: seattlechildrens.org
+    alise: SCH
+  - email: seattlechildrens.org
+    alise: SCH
+  - email: depermian.com
+    alise: DE
+  - email: doubleeagle.com
+    alise: DE
+  - email: csscorp.com
+    alise: LAB_AIRWAVE
+
+collector_url: http://server2.webr-env01.xyz/portal/collect_api/email_post
+

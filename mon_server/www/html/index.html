@@ -8,27 +8,654 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"crossorigin="anonymous">
 </head>
 
 <body>
 
 
-<nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Active</a>
-    </li>
-  </ul>
+
+
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+        <img src="title.png" height="28" alt="CoolBrand">
+    </a>
+    
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px; color: #21252994;">NaaS Clients Monitoring</span></h6>
+
+    <h6 style="margin-top: 12px;"><span class="badge badge-info" id="total_clients">Total Clients : 5</span></h6>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+       
+        <div class="navbar-nav ml-auto">
+            <span class="badge badge-danger" id="load-status">Loading...</span>
+        </div>
+    </div>
 </nav>
 
+<br>
 
-<div class="container-fluid">
-  <div class="row">
-     <div class="col" style="background-color:lavender;">.col</div>
-    <div class="col" style="background-color:orange;">.col</div>
-    <div class="col" style="background-color:lavender;">.col</div>
-  </div>
+<div class="container-fluid monitor-col" id="monitor-1">
+<!-- Dynamic Content from agents-->
 </div>
+
+
+<!-- AirAmp over time history model -->
+
+<div class="modal fade" id="airamp_over" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="air-amp-head">Network Health Over Time</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" id="air-amp-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Email model -->
+
+<div class="modal fade" id="email_over" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="email_head">Customer Email</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" id="email_body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+
+console.log("Starting JS ....")
+
+var col_count = 2;
+$( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
+
+console.log("ajax response error");  
+console.log(settings);
+
+});
+
+
+function over_time_click(c_data,a_head){
+
+
+  alerts = sessionStorage.getItem(c_data+"_alerts");
+  up = sessionStorage.getItem(c_data+"_up");
+  down = sessionStorage.getItem(c_data+"_down");
+  up_wired = sessionStorage.getItem(c_data+"_up_wired");
+  down_wired = sessionStorage.getItem(c_data+"_down_wired");
+  up_wireless = sessionStorage.getItem(c_data+"_up_wireless");
+  down_wireless = sessionStorage.getItem(c_data+"_down_wireless");
+  rogue = sessionStorage.getItem(c_data+"_rogue");
+  status = sessionStorage.getItem(c_data);
+  agentname = sessionStorage.getItem(c_data+"_agent");
+
+
+  if (status == "ok"){
+  d = `
+  <span class="badge badge-warning"><i class="fas fa-exclamation-triangle"></i>New Alerts: ${alerts}</span>
+  <span class="badge badge-secondary"><i class="fas fa-arrow-up"></i>New UP: ${up}</span>
+  <span class="badge badge-danger"><i class="fas fa-arrow-down"></i>New Down: ${down}</span>
+  <span class="badge badge-success"><i class="fas fa-arrow-up"></i>New Wired UP: ${up_wired}</span>
+  <span class="badge badge-danger"><i class="fas fa-arrow-down"></i>New Wired Down: ${down_wired}</span>
+  <span class="badge badge-success"><i class="fas fa-wifi"></i>New Wirless UP: ${up_wireless}</span>
+  <span class="badge badge-danger"><i class="fas fa-wifi"></i>New Wirless Down: ${down_wireless}</span>
+  <span class="badge badge-dark"><i class="fas fa-user-secret"></i>New Rouge: ${rogue}</span>
+  `}
+  else{
+
+    d = status;
+  }
+
+  //console.log(c_data);
+  a_head = agentname+" : "+a_head + " Min"
+  $("#air-amp-head").text(a_head);
+  $("#air-amp-body").html(d);
+  $("#airamp_over").modal('show'); 
+ 
+
+
+}
+
+function create_col_for_all_agents(agents_names){
+
+try{
+  row_head = '<div class="row monitor-row ">'
+  row_tail = '</div> <br />'
+  agents_html = ""
+  //console.log(agents_names);
+  need_new_row = 0;
+  // Bootstrap 12
+  col_size = 12 / col_count;
+
+  for(a=0;a < agents_names.length;a++)
+  {
+
+
+    if (need_new_row == 0)
+    {
+      // Add header if 
+      agents_html =  agents_html + row_head;
+
+    }
+
+    agents_html = agents_html + agent_col(agents_names[a],col_size);
+    need_new_row = need_new_row + 1;
+
+    if(need_new_row == col_count)
+    {
+
+      agents_html = agents_html + row_tail;
+      need_new_row = 0;
+
+    }
+
+    
+
+  }
+
+
+// Adding html to container
+$("#monitor-1").html(agents_html);
+}catch(err){
+console.log("** ==> create_col_for_all_agents error..."+err);
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Processing Error");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+}}
+
+
+
+function verify_available_col_for_agent(agents){
+
+// Validate agent have existing row or not , if not exist return false
+try{
+console.log("verify_available_col_for_agent....")
+for(var n=0;n < agents.length;n++ ){
+if( $('#'+agents[n]).length ){}
+else{
+console.log("verify_available_col_for_agent: False....");
+return false;
+}
+}
+console.log("verify_available_col_for_agent: True....")
+return true;
+}catch(err){console.log("** ==> verify_available_col_for_agent: "+err);return false;}
+
+}
+
+
+function update_agent_data(agents_data)
+
+{
+
+  try{
+  // Check if agent data is empty
+  if(jQuery.isEmptyObject(agents_data) == true)
+  {
+    //console.log("**==> agent data empty....");
+    $("#load-status").attr('class', 'badge badge-danger');
+    $("#load-status").text("Failed: Update not received");
+    $("#load-status").fadeOut("fast").fadeIn("fast");
+    return "";
+
+  }
+  console.log("Starting agent update....")
+  for(var i=0;i < agents_data.length;i++){
+
+  one_agent = agents_data[i];
+  agentname = one_agent["agentname"];
+  
+  agent_type = one_agent["type"];
+  a_history = one_agent["history"];
+  //console.log(a_history);
+  
+  if(one_agent["live"] == "false")
+  {
+  // Update it to live bar
+  
+  visual = one_agent["visual"];
+  //console.log(visual);
+  element_bar = '#'+agentname+"_"+a_history+"m_a";
+  history_clock = agentname+"_"+a_history+"m_a";
+
+  if(jQuery.isEmptyObject(visual) == false)
+  {
+
+  up = visual["up"];
+  down = visual["down"];
+  down_wired = visual["down_wired"];
+  down_wireless = visual["down_wireless"];
+  up_wired = visual["up_wired"];
+  up_wireless = visual["up_wireless"];
+  rogue = visual["rogue"];
+  alerts = visual["alerts"];
+
+  // Store the hitory data in session storage
+  c_data = agentname+"_"+a_history+"m_a";
+
+  sessionStorage.setItem(c_data+"_agent",agentname);
+  sessionStorage.setItem(c_data,"ok");
+  sessionStorage.setItem(c_data+"_alerts",alerts);
+  sessionStorage.setItem(c_data+"_up",up);
+  sessionStorage.setItem(c_data+"_down",down);
+  sessionStorage.setItem(c_data+"_up_wired",up_wired);
+  sessionStorage.setItem(c_data+"_down_wired",down_wired);
+  sessionStorage.setItem(c_data+"_up_wireless",up_wireless);
+  sessionStorage.setItem(c_data+"_down_wireless",down_wireless);
+  sessionStorage.setItem(c_data+"_rogue",rogue);
+
+
+  $(element_bar).attr('class', 'badge badge-success');
+  //$(element_bar).fadeOut("fast").fadeIn("fast");
+
+  if(up > 0 || up_wired > 0 || up_wired > 0)
+  {
+    // First set green if device UP , it maybe overright by next check
+    
+    $(element_bar).attr('class', 'badge badge-secondary');
+    $(element_bar).fadeOut("fast").fadeIn("fast");
+
+  }
+  if(rogue > 0){
+
+    element_bar = '#'+agentname+"_"+a_history+"m_a";
+    $(element_bar).attr('class', 'badge badge-warning');
+    $(element_bar).fadeOut("fast").fadeIn("fast");
+
+  }
+  if(down > 0 || down_wired > 0 || down_wireless > 0 || alerts > 0)
+  {
+
+    element_bar = '#'+agentname+"_"+a_history+"m_a";
+    $(element_bar).attr('class', 'badge badge-danger');
+    $(element_bar).fadeOut("fast").fadeIn("fast");
+
+  }}else
+
+  {
+
+    // Empty visual found , Set the health overtime as danger
+    c_data = agentname+"_"+a_history+"m_a";
+    sessionStorage.setItem(c_data+"_agent",agentname);
+    sessionStorage.setItem(c_data,"Data Not available");
+    //console.log("**==> agent data empty....");
+    $(element_bar).attr('class', 'badge badge-danger');
+    //$(element_bar).text("Failed: Update not received");
+    $(element_bar).fadeOut("fast").fadeIn("fast");
+
+
+  }
+
+
+}
+
+
+else if(one_agent["live"] == "true")
+{
+
+    // Agent live data
+
+    visual = one_agent["visual"]
+    if(jQuery.isEmptyObject(visual) == false){
+
+    $("#"+agentname).css({"background-color":"#ff78013d"});
+    up_live = '#'+agentname+"_"+"up_live";
+    down_live = '#'+agentname+"_"+"down_live";
+    down_wired_live = '#'+agentname+"_"+"down_wired_live";
+    down_wireless_live = '#'+agentname+"_"+"down_wireless_live";
+    wired_live = '#'+agentname+"_"+"up_wired_live";
+    wireless_live = '#'+agentname+"_"+"up_wireless_live";
+    rogue_live = '#'+agentname+"_"+"rogue_live";
+    alerts_live = '#'+agentname+"_"+"alerts_live";
+
+
+    //console.log(visual);
+    up = visual["up"];
+    down = visual["down"];
+    down_wired = visual["down_wired"];
+    down_wireless = visual["down_wireless"];
+    up_wired = visual["up_wired"];
+    up_wireless = visual["up_wireless"];
+    rogue = visual["rogue"];
+    alerts = visual["alerts"];
+
+    
+
+    $(up_live).text("UP "+up);
+    $(down_live).text("Down "+down);
+    $(down_wired_live).text("Wired Down "+down_wired);
+    $(down_wireless_live).text("Wireless Down "+down_wireless);
+    $(wired_live).text("Wired UP "+up_wired);
+    $(wireless_live).text("Wireless UP "+up_wireless);
+    $(rogue_live).text("Rouge "+rogue);
+    $(alerts_live).text("Alerts "+alerts);
+
+
+    $(up_live).fadeOut("fast").fadeIn("fast");
+    $(down_live).fadeOut("fast").fadeIn("fast");
+    $(down_wired_live).fadeOut("fast").fadeIn("fast");
+    $(down_wireless_live).fadeOut("fast").fadeIn("fast");
+    $(wired_live).fadeOut("fast").fadeIn("fast");
+    $(wireless_live).fadeOut("fast").fadeIn("fast");
+    $(rogue_live).fadeOut("fast").fadeIn("fast");
+    $(alerts_live).fadeOut("fast").fadeIn("fast");
+
+  }else{
+      $("#"+agentname).css({"background-color":"#f91a1abf"});
+    // Live agent information not found
+
+    }
+
+
+}
+
+}
+
+
+
+}catch(err){
+
+
+    console.log("**==>Failed: Server failed"+err);
+    $("#"+agentname).css({"background-color":"#f91a1abf"});
+    $("#load-status").attr('class', 'badge badge-danger');
+    $("#load-status").text("Failed: Update failed");
+    $("#load-status").fadeOut("fast").fadeIn("fast");
+
+}
+
+}
+
+
+
+function over_mail_click(agnt_n){
+
+console.log("Mail Clicked:"+agnt_n)
+
+e_head = agnt_n+": Customer Email";
+
+compose_data = ""
+
+
+try{
+ 
+ data = sessionStorage.getItem("all_email");
+
+ data = JSON.parse(data);
+ data = data["data"];
+
+ if(jQuery.isEmptyObject(data) == false){
+ jQuery.each( data, function( i, val ) 
+ {
+
+          e_alise = val["alise"];
+          e_datetime = val["datetime"];
+          e_from = val["from"];
+          e_name = val["name"];
+          e_subject = val["subject"];
+          if(e_alise == agnt_n){
+
+
+              compose_data = compose_data + `<tr>
+              <td>${e_datetime}</td>
+              <td>${e_name}</td>
+              <td>${e_subject}</td>
+              </tr>`
+          }
+
+});}
+
+
+}catch(err){console.log(err);}
+
+
+compose_body = `<table class="table table-condensed">
+                <thead>
+                <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Subject</th>
+                </tr>
+                </thead>
+                <tbody>
+                ${compose_data}
+                </tbody>
+                </table>`;
+
+$("#email_head").text(e_head);
+$("#email_body").html(compose_body);
+$("#email_over").modal('show');
+
+}
+
+
+function process_email_data(data, textStatus, jqXHR){
+
+console.log("Processing Email...");
+console.log(data);
+
+try{
+
+    if(data["results"] == "success" )
+    {
+
+      data = data["data"];
+
+
+
+      if(jQuery.isEmptyObject(data) == false)
+      {
+
+        // Save all clients pending mail to session table
+
+        all_data = JSON.stringify(data);
+        sessionStorage.setItem("all_email",all_data);
+
+        if(jQuery.isEmptyObject(data["data"]) == false)
+        {
+
+        // Set red for client email button
+        $(".email_class").text("Pending:0")
+        jQuery.each( data["data"], function( i, val ){alis = val["alise"];
+          mail_count = $("#"+alis+"_email").text();
+          mail_count = mail_count.split(":")[1]
+          mail_count = parseInt(mail_count);
+          if (Number.isNaN(mail_count)){mail_count=0;}
+          mail_count = mail_count + 1;
+          $("#"+alis+"_email").text("Pending:"+mail_count);
+          $("#"+alis+"_email").attr('class', 'badge email_class badge-danger');
+        })
+        
+
+        }
+
+      }else{
+        $(".email_class").text("Pending:0")
+        sessionStorage.setItem("all_email",null);
+        $(".email_class").attr('class', 'badge email_class badge-secondary');
+      }
+
+
+
+    }
+    else
+    {
+    console.log("Email Update not having 'Success'...")
+    $("#load-status").attr('class', 'badge badge-danger');
+    $("#load-status").text("Email: Server Error");
+    $("#load-status").fadeOut("fast").fadeIn("fast");
+    }
+
+  }catch(err){console.log("** ==> process_email_data Error..."+err);}
+
+}
+
+
+function process_data(data, textStatus, jqXHR){
+
+console.log("Received agent Update....");
+console.log(data);
+
+if(data["results"] == "success" ){
+
+$("#load-status").attr('class', 'badge badge-success');
+$("#load-status").text("Online");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+
+agents = data["agents"]
+
+verify_agent = verify_available_col_for_agent(agents);
+if(verify_agent == true){
+// Update Agent data
+  console.log("agent verification: True, updating agents")
+  update_agent_data(data["agents_data"]);
+
+}else{
+// New Agent found need to create new row html in container
+console.log("agent verification: False, creating 'rows' for agents")
+$("#total_clients").text("Total Clients: "+agents.length)
+create_col_for_all_agents(agents);
+update_agent_data(data["agents_data"]);
+}
+
+
+}else{
+console.log("Received Update not having 'Success'...")
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Error");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+}
+
+}
+
+
+// Process Data End ================== //
+
+
+function process_error(xhr, ajaxOptions, thrownError){
+
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Connection Error");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+console.log("** ==> Process Error...");
+
+}
+
+
+function process_email_error(xhr, ajaxOptions, thrownError){
+
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Connection Error");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+console.log("** ==> Process Error...");
+
+}
+
+function get_update(){
+
+try{
+
+console.log("Getting airwave agent Update....")
+
+$.ajax({
+    type: 'GET',url: '/portal/collect_api/air_get',contentType: false,cache: false,processData:false,
+    success: process_data,error: process_error})
+
+}catch(err){console.log("** ==> get_update Error..."+err);}}
+
+
+function get_email_update(){
+
+try{
+
+console.log("Getting Email Update....")
+
+$.ajax({
+    type: 'GET',url: '/portal/collect_api/email_get',contentType: false,cache: false,processData:false,
+    success: process_email_data,error: process_email_error})
+
+}catch(err){console.log("** ==> get_email_update Error..."+err);}}
+
+
+function agent_col(agent_name,col_size){
+
+make_table = (agent_name,col_size) => `
+
+<div class="col-sm-${col_size} ">
+<div class="mr-2" id="${agent_name}" style="background-color:#ff78013d">
+<img src="${agent_name}.png" class="img-thumbnail " alt="Cinque Terre">
+<span class="badge badge-warning fas fa-exclamation-triangle" id="${agent_name}_alerts_live">Alerts </span>
+<span class="badge badge-secondary fas fa-arrow-up" id="${agent_name}_up_live">UP </span>
+<span class="badge badge-danger fas fa-arrow-down" id="${agent_name}_down_live">Down </span>
+<span class="badge badge-success fas fa-arrow-up" id="${agent_name}_up_wired_live">Wired UP </span>
+<span class="badge badge-danger fas fa-arrow-down" id="${agent_name}_down_wired_live">Wired Down </span>
+<span class="badge badge-success fas fa-wifi" id="${agent_name}_up_wireless_live">Wirless UP </span>
+<span class="badge badge-danger fas fa-wifi" id="${agent_name}_down_wireless_live">Wirless Down </span>
+<span class="badge badge-dark fas fa-user-secret" id="${agent_name}_rogue_live">Rouge </span>
+
+<div class="progress" style="height:3px">
+    <div class="progress-bar" style="width:100%;height:10px"></div>
+  </div>
+<div class="table-responsive" >
+  <span class="badge bg-warning"><i class="fas fa-heartbeat"></i>Network Health Over Time</span>
+    <table class="table table-borderless" >
+      <thead>
+        <tr>
+          <th style="padding: .0rem"><button class="badge badge-secondary" onclick="over_time_click('${agent_name}_0m_a','5')" id="${agent_name}_0m_a"><i class="fas fa-clock"></i>5 Min</button></th>
+
+          <th style="padding: .0rem"><button class="badge badge-secondary" onclick="over_time_click('${agent_name}_1m_a','10')" id="${agent_name}_1m_a"><i class="fas fa-clock"></i>10 Min</button></th>
+          
+          <th style="padding: .0rem"><button class="badge badge-secondary" onclick="over_time_click('${agent_name}_2m_a','15')" id="${agent_name}_2m_a"><i class="fas fa-clock"></i>15 Min</button></th>
+          
+          <th style="padding: .0rem"><button class="badge badge-secondary" onclick="over_time_click('${agent_name}_3m_a','20')" id="${agent_name}_3m_a"><i class="fas fa-clock"></i>20 Min</button></th>
+          
+          <th style="padding: .0rem"><button class="badge badge-secondary" onclick="over_time_click('${agent_name}_4m_a','25')" id="${agent_name}_4m_a"><i class="fas fa-clock"></i>25 Min</button></th>
+        </tr>
+      </thead>
+    </table>
+    <span class="badge bg-warning"><i class="fas fa-envelope"></i>Customer Email</span>
+  <button class="badge email_class badge-secondary" onclick="over_mail_click('${agent_name}')" id="${agent_name}_email"><i class="fas fa-envelope"></i>Pending:0</button></th>
+  </div>
+  </div>
+</div>`
+
+return make_table(agent_name,col_size)
+
+
+}
+
+//console.log(create_table_head("TAMU"));
+get_update();
+get_email_update();
+setInterval(get_update,10000)
+setInterval(get_email_update,10000)
+
+</script>
+
 
 
 </body>

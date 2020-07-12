@@ -25,6 +25,7 @@ import ast
 import socket
 from xml.etree import ElementTree as ET
 import numpy
+import ast
 
 
 # Reading Environment variable
@@ -51,11 +52,52 @@ CORS(app)
 mongoc = PyMongo(app,uri='mongodb://'+webr_mongodb+':27017/mon')
 mdb = mongoc.db
 mcollection = mdb['mon']
+email_collection = mdb['email']
 
 
 @app.route('/portal')
 def main():
 	 return "API IS UP :"+str(datetime.datetime.utcnow())
+
+@app.route('/portal/collect_api/email_post',methods = ['POST'])
+def email_agent_post():
+	try:
+		if request.method == 'POST':
+			result = request.form
+			
+			agentname = result.get("agentname")
+			agent_type = result.get("agent_type")
+			data = result.get("data")
+
+			try:
+				data = ast.literal_eval(data)
+			except:
+				data = []
+
+			dnow = datetime.datetime.utcnow()
+
+			insrt = {"agent_date":dnow,"agentname":agentname,"agent_type":agent_type,"data":data}
+			result = email_collection.replace_one({"_id":1},insrt,upsert=True)
+
+			return jsonify({"results":"success","DB":str(result),"message":"DB response"})
+
+	except Exception as e:
+		return jsonify({"results":"error","message":str(e)})
+
+
+@app.route('/portal/collect_api/email_get',methods = ['GET'])
+def email_agent_get():
+	try:
+		if request.method == 'GET':
+
+			find_email = email_collection.find_one({"_id":1},{"_id":0})
+
+			return jsonify({"results":"success","type":"email_agent","data":find_email})
+
+	except Exception as e:
+		return jsonify({"results":"error","message":str(e)})
+
+
 
 @app.route('/portal/collect_api/air_post',methods = ['POST'])
 def air_agent_post():
@@ -111,10 +153,13 @@ def validate_results(all_dbval):
 		up_wired = list()
 		up_wireless = list()
 
+		rogue = list()
+
 		#return all_dbval
 		
 		for dbval in all_dbval:
 			alerts.append(int(dbval.get("alerts")))
+			rogue.append(int(dbval.get("rogue")))
 
 			down.append(int(dbval.get("down")))
 			down_wired.append(int(dbval.get("down_wired")))
@@ -140,17 +185,17 @@ def validate_results(all_dbval):
 
 		if len(down_wired) > 0:
 			if numpy.amin(down_wired) == numpy.amax(down_wired):
-				msg.update({"wired down":0})
+				msg.update({"down_wired":0})
 			else:
 				t = numpy.amax(down_wired) - numpy.amin(down_wired) 
-				msg.update({"wired down":int(t)})
+				msg.update({"down_wired":int(t)})
 
 		if len(down_wireless) > 0:
 			if numpy.amin(down_wireless) == numpy.amax(down_wireless):
-				msg.update({"wireless down":0})
+				msg.update({"down_wireless":0})
 			else:
 				t = numpy.amax(down_wireless) - numpy.amin(down_wireless) 
-				msg.update({"wireless down":int(t)})
+				msg.update({"down_wireless":int(t)})
 
 		if len(up) > 0:
 			if numpy.amin(up) == numpy.amax(up):
@@ -161,17 +206,24 @@ def validate_results(all_dbval):
 
 		if len(up_wired) > 0:
 			if numpy.amin(up_wired) == numpy.amax(up_wired):
-				msg.update({"wired up":0})
+				msg.update({"up_wired":0})
 			else:
 				t = numpy.amax(up_wired) - numpy.amin(up_wired) 
-				msg.update({"wired up":int(t)})
+				msg.update({"up_wired":int(t)})
 
 		if len(up_wireless) > 0:
 			if numpy.amin(up_wireless) == numpy.amax(up_wireless):
-				msg.update({"wireless up":0})
+				msg.update({"up_wireless":0})
 			else:
 				t = numpy.amax(up_wireless) - numpy.amin(up_wireless) 
-				msg.update({"wireless up":int(t)})
+				msg.update({"up_wireless":int(t)})
+
+		if len(rogue) > 0:
+			if numpy.amin(rogue) == numpy.amax(rogue):
+				msg.update({"rogue":0})
+			else:
+				t = numpy.amax(rogue) - numpy.amin(rogue) 
+				msg.update({"rogue":int(t)})
 
 		return msg
 
@@ -184,6 +236,7 @@ def validate_results(all_dbval):
 def air_agent_get():
 	try:
 		result = mcollection.distinct("agentname")
+		agents_list = list(result)
 		all_results = []
 		start_time = datetime.datetime.utcnow()
 		time_between = 5 # Get report between 5 min
@@ -192,8 +245,8 @@ def air_agent_get():
 		# Get the range of minutes
 		for x in range(5):
 			# forward back to time
-			if len(result) > 0:
-				for agent in result:
+			if len(agents_list) > 0:
+				for agent in agents_list:
 
 					# Check air_amp
 					query = {"agentname":agent,"agent_date":{'$lt': start_time, '$gte': end_time}}
@@ -214,7 +267,7 @@ def air_agent_get():
 			end_time = end_time - datetime.timedelta(minutes=time_between)
 
 
-		return jsonify({"results":"success","data":all_results,"message":"Calculated DB response"})
+		return jsonify({"results":"success","agents_data":all_results,"message":"Calculated DB response","agents":agents_list})
 	except Exception as e:
 		return jsonify({"results":"error","message":str(e)})
 
