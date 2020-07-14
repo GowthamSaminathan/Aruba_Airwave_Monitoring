@@ -1,8 +1,8 @@
 agent_name: EMAIL_AGENT
-email: eeee@hpe.com
-password: ppppp@123
+email: gowtham.saminathan@test.com
+password: GGG@123
 email_server: outlook.office365.com
-filter time: 24
+filter time: 2
 customers:
   - email: wau.edu
     alise: WAU

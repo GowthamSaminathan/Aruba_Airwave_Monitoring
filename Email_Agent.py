@@ -12,6 +12,8 @@ from requests_toolbelt import MultipartEncoder
 from exchangelib import Credentials, Account, DELEGATE,Configuration,EWSTimeZone,EWSDateTime
 import time
 import io
+import datetime
+from exchangelib import Message
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 requests.adapters.DEFAULT_RETRIES = 0
@@ -95,6 +97,8 @@ class Email_agent():
 				conf = Configuration(server=self.config.get("email_server"), credentials=credentials)
 				self.account = Account(primary_smtp_address=self.config.get('email'), credentials=credentials,
 					config=conf,autodiscover=False,access_type=DELEGATE)
+
+				print(self.account.default_timezone)
 				print("Connected...")
 				return True
 			except Exception:
@@ -107,8 +111,10 @@ class Email_agent():
 		while True:
 			try:
 				print("Reading emails....")
-				tz = EWSTimeZone.localzone()
-				since = UTC_NOW() - timedelta(hours=self.config.get("filter time"))
+				tz = self.account.default_timezone
+				lc_now = tz.localize(EWSDateTime.from_datetime(datetime.datetime.now()))
+				since = lc_now - timedelta(hours=self.config.get("filter time"))
+				print(since)
 				filtered_emails = self.account.inbox.all().filter(datetime_received__gt=since).order_by('-datetime_received')
 				data = self.validate_emails(filtered_emails)
 				print(data)
@@ -129,34 +135,60 @@ class Email_agent():
 
 			#Read older mail first
 			print("Validing emails...")
-			for mail in filtered_emails.reverse():
+			i = 0
+			j = 0
+			for item in filtered_emails.reverse():
 				#print(mail.sender)
-				subject = mail.subject.lower().replace('re: ', '')
-				sender_address = mail.sender.email_address
-				from_name = mail.sender.name
-				datetime_received = mail.datetime_received
+				i = i +1
 
-				# Convert to local datetime
-				datetime_received = datetime_received + timedelta(hours=5.50)
-				
-				sender_address = sender_address.lower()
+				print("Total mails:"+str(i))
+				if not isinstance(item, Message):
+					print("========>")
+					continue
+				try:
 
-				customers_matched = False
-				for cus in customers:
-					cus_email = cus.get("email")
-					if sender_address.find(cus_email.lower()) != -1:
-						customers_matched = True
+					if item == None:
+						print("Email missing....")
+					elif item.sender == None:
+						print("Email sender missing....")
+						#print(mail)
+					else:
+						j = j +1
+						print("Valid mails> " +str(j))
+						subject = str(item.subject).lower().replace('re: ', '')
 
-				if customers_matched == True:
-					# Last mail from customer
-					m = {"from":sender_address,"alise":cus.get("alise"),"subject":subject}
-					datetime_received = m.update({"datetime":str(datetime_received)})
-					m.update({"name":from_name})
+						sender_address = item.sender.email_address
+						from_name = item.sender.name
+						datetime_received = item.datetime_received
 
-					not_responded_mail.update({subject:m})
-				else:
-					# Last mail from HPE
-					not_responded_mail.pop(subject,"None")
+						# Convert to local datetime
+						datetime_received = datetime_received + timedelta(hours=5.50)
+						
+						sender_address = sender_address.lower()
+
+						#print(str(datetime_received))
+
+						customers_matched = False
+						for cus in customers:
+							cus_email = cus.get("email")
+							if sender_address.find(cus_email.lower()) != -1:
+								customers_matched = True
+								customer_alise = cus.get("alise")
+
+						if customers_matched == True:
+							# Last mail from customer
+							m = {"from":sender_address,"alise":customer_alise,"subject":subject}
+							datetime_received = m.update({"datetime":str(datetime_received)})
+							m.update({"name":from_name})
+
+							not_responded_mail.update({subject:m})
+						else:
+							# Last mail from HPE
+							not_responded_mail.pop(subject,"None")
+				except Exception:
+					#pass;
+					print("===== Processing Error ====")
+					#logger.exception("processing email failed:")
 
 			# Removing subject key from dict
 			for nrm in not_responded_mail:
@@ -165,7 +197,9 @@ class Email_agent():
 
 			return missed_mails
 		except Exception:
-			logger.exception("validate_emails")
+			print("Some Error...")
+			pass;
+			#logger.exception("validate_emails")
 
 
 
